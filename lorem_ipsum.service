@@ -1,0 +1,10 @@
+[Unit]
+Description = simple application serving Lorem-ipsum-like sentences
+
+[Service]
+ExecStart = /opt/lorem_ipsum/app.py /opt/lorem_ipsum/word_source
+Restart = always
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
