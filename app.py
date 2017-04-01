@@ -14,7 +14,7 @@ from lorem_ipsum import LoremIpsum
 
 SCRIPT_LOCATION = os.path.dirname(os.path.abspath(__file__))
 CONFIG_LOCATION = os.path.join(
-    SCRIPT_LOCATION, "config", "lorem_ipsum.conf")
+    SCRIPT_LOCATION, "config", "sngsk.info.conf")
 CONF = configparser.ConfigParser(allow_no_value=True)
 CONF.read(CONFIG_LOCATION)
 SECTION = "app"
