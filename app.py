@@ -20,7 +20,7 @@ CONF.read(CONFIG_LOCATION)
 SECTION = "app"
 
 DOMAIN = CONF.get(SECTION, "domain")
-CSS = CONF.get(SECTION, "css")
+CSS = CONF.get(SECTION, "common_css")
 FAVICON = CONF.get(SECTION, "favicon")
 
 APP = flask.Flask(__name__)
