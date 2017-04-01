@@ -1,8 +1,8 @@
 [Unit]
-Description = simple application serving Lorem-ipsum-like sentences
+Description = tiny application for sngsk.info
 
 [Service]
-ExecStart = /opt/lorem_ipsum/app.py /opt/lorem_ipsum/word_source
+ExecStart = /opt/sngsk.info/app.py
 Restart = always
 Type = simple
 

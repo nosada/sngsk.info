@@ -1,33 +1,43 @@
+"""Generate Lorem Ipsum"""
+
 import argparse
 import random
 
 
 class LoremIpsum(object):
+    """Class for Lorem Ipsum generation"""
+
     def __init__(self, word_source_file):
-        with open(word_source_file, 'r') as f:
-            self.word_source = f.read().split('\n')
-        self.punctuations = [' ', ',', ':', ';']
+        """Constructor of LoremIpsum"""
+
+        with open(word_source_file, 'r') as wsf:
+            self.word_source = wsf.read().split('\n')
         self.base_param = 80
         self.rate_sentence = self.base_param + random.randint(1, 10)
         self.rate_paragraph = self.base_param + random.randint(1, 10)
         self.rate_text = self.base_param + random.randint(1, 10)
 
-    def stop_generation(self, limit):
-        if random.randint(1, 100) > limit:
-            return True
-        else:
-            return False
+    @staticmethod
+    def stop_generation(limit):
+        """Decide to stop Lorem Ipsum generation randomly"""
+        return random.randint(1, 100) > limit
 
-    def choose_punctuation(self):
+    @staticmethod
+    def choose_punctuation():
+        """Choose puctuation randomly"""
+
+        punctuations = [' ', ',', ':', ';']
         random_number = random.randint(1, 100)
         if random_number < 90:
-            return self.punctuations[0]
+            return punctuations[0]
         elif 90 <= random_number < 97:
-            return self.punctuations[1] + ' '
+            return punctuations[1] + ' '
         elif 97 <= random_number <= 100:
-            return random.choice(self.punctuations[2:]) + ' '
+            return random.choice(punctuations[2:]) + ' '
 
     def generate_sentence(self):
+        """Generate sentence using words in self.word_source"""
+
         sentence = ''
         while True:
             word = random.choice(self.word_source)
@@ -42,6 +52,9 @@ class LoremIpsum(object):
         return sentence[0].upper() + sentence[1:]
 
     def generate_paragraph(self):
+        """Generate paragraph using generated sentence by
+        self.generate_sentence()"""
+
         sentences = set()
         while True:
             sentences.add(self.generate_sentence())
@@ -50,6 +63,9 @@ class LoremIpsum(object):
         return ' '.join(sentences)
 
     def generate_text(self):
+        """Generate text using generated paragraph by
+        self.generate_text()"""
+
         paragraphs = set()
         while True:
             paragraphs.add(self.generate_paragraph())
@@ -59,16 +75,16 @@ class LoremIpsum(object):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-            description="Generates random pseudo-sentences like Lorem ipsum.")
-    parser.add_argument(
+    PARSER = argparse.ArgumentParser(
+        description="Generates random pseudo-sentences like Lorem ipsum.")
+    PARSER.add_argument(
         "word_source",
         metavar="<word source>",
         type=str,
         help="list of words for generating pseudo-sentences")
-    args = parser.parse_args()
+    ARGS = PARSER.parse_args()
 
-    word_source = args.word_source
-    li = LoremIpsum(word_source)
-    text = li.generate_text()
-    print(text)
+    WORD_SOURCE = ARGS.word_source
+    LI = LoremIpsum(WORD_SOURCE)
+    TEXT = LI.generate_text()
+    print(TEXT)
