@@ -9,20 +9,21 @@ class GenerateLoremIpsum(object):
     """Generate Lorem Ipsum content and put it into page body"""
 
     def __init__(self):
-        """Constructor of LoremIpsumBody"""
+        """Read config and set parameters"""
         self.conf = Conf()
         self.emphasis = [" <b>{}</b> ", " <i>{}</i> "]
         self.word_list, rate_emphasis = \
             self.conf.read_lorem_ipsum_config()
         self.rate_emphasis = int(rate_emphasis)
 
-    def _get_lorem_ipsum_paragraphs(self):
+    def get_lorem_ipsum_paragraphs(self):
+        """Get Lolem Ipsum text and convert it to list"""
         lorem_ipsum = LoremIpsum(self.word_list)
         return lorem_ipsum.generate_text().split("\n\n")
 
-    def _generate_html_body(self):
+    def generate_html_body(self):
         """Create page body; generate Lorem Ipsum and put it into page body"""
-        paragraphs = self._get_lorem_ipsum_paragraphs()
+        paragraphs = self.get_lorem_ipsum_paragraphs()
         html_paragraphs = []
         for paragraph in paragraphs:
             html_paragraph = ''

@@ -3,7 +3,7 @@
 """Tiny application for sngsk.info"""
 
 import flask
-from libs.app import GetLoremIpsumView, GetAboutMeView
+from libs.view import GetLoremIpsumView, GetAboutMeView
 
 APP = flask.Flask(__name__)
 
