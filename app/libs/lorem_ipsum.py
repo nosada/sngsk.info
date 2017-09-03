@@ -19,12 +19,22 @@ class LoremIpsum(object):
 
     @staticmethod
     def stop_generation(limit):
-        """Decide to stop Lorem Ipsum generation randomly"""
+        """Decide to stop Lorem Ipsum generation randomly
+        - args: 'limit' as int
+                threshold of randam number between 1 to 100
+        - returns: boolean
+                   Return True if random.randint(1, 100) returns value bigger
+                   than 'limit'.
+                   Return False if otherwise."""
+
         return random.randint(1, 100) > limit
 
     @staticmethod
     def choose_punctuation():
-        """Choose puctuation randomly"""
+        """Choose puctuation randomly
+        - args: none
+        - returns: punctuation either one of ', ', ': ', '; ', ' '
+        """
 
         punctuations = [' ', ',', ':', ';']
         random_number = random.randint(1, 100)
@@ -36,7 +46,9 @@ class LoremIpsum(object):
             return random.choice(punctuations[2:]) + ' '
 
     def generate_sentence(self):
-        """Generate sentence using words in self.word_source"""
+        """Generate sentence using words in self.word_source
+        - args: none
+        - returns: sentence as str"""
 
         sentence = ''
         while True:
@@ -53,7 +65,9 @@ class LoremIpsum(object):
 
     def generate_paragraph(self):
         """Generate paragraph using generated sentence by
-        self.generate_sentence()"""
+        self.generate_sentence()
+        - args: none
+        - returns: paragraph as str"""
 
         sentences = set()
         while True:
@@ -64,7 +78,9 @@ class LoremIpsum(object):
 
     def generate_text(self):
         """Generate text using generated paragraph by
-        self.generate_text()"""
+        self.generate_text()
+        - args: none
+        - returns: text as str"""
 
         paragraphs = set()
         while True:

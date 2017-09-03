@@ -10,6 +10,7 @@ class GenerateLoremIpsum(object):
 
     def __init__(self):
         """Read config and set parameters"""
+
         self.conf = Conf()
         self.emphasis = [" <b>{}</b> ", " <i>{}</i> "]
         self.word_list, rate_emphasis = \
@@ -17,12 +18,18 @@ class GenerateLoremIpsum(object):
         self.rate_emphasis = int(rate_emphasis)
 
     def get_lorem_ipsum_paragraphs(self):
-        """Get Lolem Ipsum text and convert it to list"""
+        """Get Lolem Ipsum text and convert it to list
+        - args: none
+        - returns: paragraphs as str"""
+
         lorem_ipsum = LoremIpsum(self.word_list)
         return lorem_ipsum.generate_text().split("\n\n")
 
     def generate_html_body(self):
-        """Create page body; generate Lorem Ipsum and put it into page body"""
+        """Create page body; generate Lorem Ipsum and put it into page body
+        - args: none
+        - returns: html body as str"""
+
         paragraphs = self.get_lorem_ipsum_paragraphs()
         html_paragraphs = []
         for paragraph in paragraphs:

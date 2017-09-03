@@ -11,13 +11,17 @@ class GetLoremIpsumView(GenerateLoremIpsum, View):
 
     def __init__(self, template_name):
         """Read conf and set template name for given template_name"""
+
         super(GetLoremIpsumView, self).__init__()
         self.conf = Conf()
         self.domain, self.css, self.favicon = self.conf.read_app_config()
         self.template_name = template_name
 
     def dispatch_request(self):
-        """Generate Lorem Ipsum page and return it"""
+        """Generate Lorem Ipsum page and return it
+        - args: none
+        - returns: render_template object"""
+
         html_body = self.generate_html_body()
         return render_template(self.template_name,
                                body=html_body,
@@ -31,13 +35,17 @@ class GetAboutMeView(View):
 
     def __init__(self, template_name):
         """Read conf and set template name for given template_name"""
+
         super(GetAboutMeView, self).__init__()
         self.conf = Conf()
         self.domain, self.css, self.favicon = self.conf.read_app_config()
         self.template_name = template_name
 
     def dispatch_request(self):
-        """Generate aboutme page and return it"""
+        """Generate aboutme page and return it
+        - args; none
+        - returns: render_template object"""
+
         return render_template(self.template_name,
                                domain=self.domain,
                                css=self.css,
