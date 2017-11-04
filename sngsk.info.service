@@ -2,7 +2,7 @@
 Description = tiny application for sngsk.info
 
 [Service]
-ExecStart = /usr/bin/python /opt/sngsk.info/app/main.py
+ExecStart = /usr/bin/python /opt/sngsk.info/top/main.py
 Restart = always
 Type = simple
 
