@@ -1,8 +1,17 @@
-@import url("./narrow.css") screen and (max-width : 768px);
-@import url("./default.css") screen and (min-width : 769px);
+@import url("./narrow.css") screen and (max-width: 768px);
+@import url("./default.css") screen and (min-width: 769px);
 
-h1, h2 {font-family : serif;}
+h1, h2 {font-family: serif;}
+
 p {
-	font-family : serif;
-	text-indent : 1em;
+	font-family: serif;
+}
+
+p.drop_cap:first-letter {
+	font-weight: bold;
+	font-size: 250%;
+	line-height: 1;
+	float: left;
+	padding: 3px;
+	margin-right: 3px;
 }

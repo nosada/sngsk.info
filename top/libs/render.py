@@ -39,6 +39,13 @@ class GenerateLoremIpsum(object):
                     html_paragraph += random.choice(self.emphasis).format(word)
                 else:
                     html_paragraph += " {} ".format(word)
-            html_paragraphs.append("<p>" + html_paragraph + "</p>")
+            rendered_paragraph = ''.join([
+                "\t\t",
+                "<p class=\"drop_cap\">",
+                html_paragraph,
+                "</p>",
+                "<br/>"
+            ])
+            html_paragraphs.append(rendered_paragraph)
         html_body = '\n'.join(html_paragraphs)
         return html_body

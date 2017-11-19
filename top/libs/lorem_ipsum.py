@@ -36,7 +36,7 @@ class LoremIpsum(object):
         - returns: punctuation either one of ', ', ': ', '; ', ' '
         """
 
-        punctuations = [' ', ',', ':', ';']
+        punctuations = [' ', ',', ':', ';', '!', '?']
         random_number = random.randint(1, 100)
         if random_number < 90:
             return punctuations[0]
