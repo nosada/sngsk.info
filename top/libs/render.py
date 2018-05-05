@@ -13,16 +13,17 @@ class GenerateLoremIpsum(object):
 
         self.conf = Conf()
         self.emphasis = [" <b>{}</b> ", " <i>{}</i> "]
-        self.word_list, rate_emphasis = \
+        self.word_list, rate_emphasis, base_rate = \
             self.conf.read_lorem_ipsum_config()
         self.rate_emphasis = int(rate_emphasis)
+        self.base_rate = int(base_rate)
 
     def get_lorem_ipsum_paragraphs(self):
         """Get Lolem Ipsum text and convert it to list
         - args: none
         - returns: paragraphs as str"""
 
-        lorem_ipsum = LoremIpsum(self.word_list)
+        lorem_ipsum = LoremIpsum(self.word_list, self.base_rate)
         return lorem_ipsum.generate_text().split("\n\n")
 
     def generate_html_body(self):

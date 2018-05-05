@@ -7,15 +7,19 @@ import random
 class LoremIpsum(object):
     """Class for Lorem Ipsum generation"""
 
-    def __init__(self, word_source_file):
+    def __init__(self, word_source_file, base_rate):
         """Constructor of LoremIpsum"""
 
         with open(word_source_file, 'r') as wsf:
             self.word_source = wsf.read().split('\n')
-        self.base_param = 80
-        self.rate_sentence = self.base_param + random.randint(1, 10)
-        self.rate_paragraph = self.base_param + random.randint(1, 10)
-        self.rate_text = self.base_param + random.randint(1, 10)
+        if 0 < base_rate < 100:
+            self.base_rate = base_rate
+        else:
+            raise ValueError("base_rate must be between 1 to 99")
+
+        self.rate_sentence = self.base_rate + random.randint(1, 10)
+        self.rate_paragraph = self.base_rate + random.randint(1, 10)
+        self.rate_text = self.base_rate + random.randint(1, 10)
 
     @staticmethod
     def stop_generation(limit):
@@ -98,9 +102,16 @@ if __name__ == "__main__":
         metavar="<word source>",
         type=str,
         help="list of words for generating pseudo-sentences")
+    PARSER.add_argument(
+        "base_rate",
+        metavar="<base parameter>",
+        type=int,
+        help=("base rate between 1 to 99 used to generate"
+              "Lorem Ipsum sentences, paragraphs and texts"))
     ARGS = PARSER.parse_args()
 
     WORD_SOURCE = ARGS.word_source
-    LI = LoremIpsum(WORD_SOURCE)
+    BASE_RATE = ARGS.base_rate
+    LI = LoremIpsum(WORD_SOURCE, BASE_RATE)
     TEXT = LI.generate_text()
     print(TEXT)
