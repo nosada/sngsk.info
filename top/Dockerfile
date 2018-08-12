@@ -2,7 +2,6 @@ FROM python:alpine
 
 ENV BASE_DIR "/opt/sngsk.info/top"
 
-
 RUN apk --no-cache add shadow \
 	&& useradd --create-home app \
 	&& mkdir -p $BASE_DIR \
