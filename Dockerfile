@@ -9,7 +9,6 @@ USER nginx
 COPY ./static_files ./static_files
 COPY ./nginx/container/nginx.conf /etc/nginx/nginx.conf
 
-USER root
 EXPOSE 8081
 
 CMD ["nginx", "-g", "daemon off;"]
