@@ -14,7 +14,7 @@ class GetLoremIpsumView(GenerateLoremIpsum, View):
 
         super(GetLoremIpsumView, self).__init__()
         self.conf = Conf()
-        self.domain, self.css, self.favicon = self.conf.read_app_config()
+        self.domain, self.favicon = self.conf.read_app_config()
         self.template_name = template_name
 
     def dispatch_request(self):
@@ -26,7 +26,6 @@ class GetLoremIpsumView(GenerateLoremIpsum, View):
         return render_template(self.template_name,
                                body=html_body,
                                domain=self.domain,
-                               css=self.css,
                                favicon=self.favicon)
 
 
@@ -38,7 +37,7 @@ class GetAboutMeView(View):
 
         super(GetAboutMeView, self).__init__()
         self.conf = Conf()
-        self.domain, self.css, self.favicon = self.conf.read_app_config()
+        self.domain, self.favicon = self.conf.read_app_config()
         self.template_name = template_name
 
     def dispatch_request(self):
@@ -48,5 +47,4 @@ class GetAboutMeView(View):
 
         return render_template(self.template_name,
                                domain=self.domain,
-                               css=self.css,
                                favicon=self.favicon)

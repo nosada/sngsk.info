@@ -39,16 +39,14 @@ class Conf(object):
     def read_app_config(self):
         """Return static files location for rendering html
         - args: none
-        - returns: tuple of (domain, css, favicon)
+        - returns: tuple of (domain, favicon)
             - domain: domain in str which is used on web site where running app
-            - css: path of CSS file
             - favicon: path of favicon"""
 
         section = "app"
         domain = self.conf.get(section, "domain")
-        css = self.conf.get(section, "common_css")
         favicon = self.conf.get(section, "favicon")
-        return domain, css, favicon
+        return domain, favicon
 
     def get_port_number(self):
         """Return port number using app specified in config
